@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" xmlns="http://www.w3.org/1999/xhtml">
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ui-mobile-rendering" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ui-mobile-rendering" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ui-mobile-rendering" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js ui-mobile-rendering" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<!-- Use the .htaccess and remove these lines to avoid edge case issues. More info: h5bp.com/i/378 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Sleep</title>
+	<meta name="description" content="Sleep">
+	<!-- Mobile viewport optimized: h5bp.com/viewport -->
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+	<script type="text/javascript" src="../../../../js/libs/bower/jQuery/dist/jquery.js"></script>
+	<script type="text/javascript" src="../../../../js/libs/bower/moment/moment.js"></script>
+	<script type="text/javascript" src="../../../../js/libs/bower/livestampjs/livestamp.js"></script>
+	<script type="text/javascript">
+
+	function stars(){
+		var windowheight = $(window).height();
+		var windowwidth = $(window).width();
+		var verticalcount = windowheight/35;
+		var horizontalcount = windowwidth/35;
+		var dotcount = verticalcount*horizontalcount;
+		var opacity;
+		for (var n=0; n <= dotcount; n++){
+				opacity = n*.001;
+			$('#background').append("<div style='opacity:"+opacity+";filter:alpha(opacity="+opacity+"0;'>*</div>");
+		}
+	}
+
+	$(document).ready( function(){
+		//stars();
+		var base = moment().add('minute',14);
+		var waketime;
+		var opacity;
+		for (var i = 6; i >= 1; i--) {
+			opacity = 100-(i*10);
+			waketime = base.add('minute',90).format('h:mm a');
+			$(".wrap").append("<div class='time' style='opacity:."+opacity+";filter:alpha(opacity="+(opacity+0)+");'>"+waketime+"</div>");
+		}
+	});
+	$(window).resize(function(){
+		stars();
+	});
+
+	</script>
+	<style type="text/css">
+		body {
+			font-size: 15px;
+			font-family: Helvetica, Arial, Tahoma, Sans-Serif;
+			text-align: center;
+			background: rgb(0,37,54);
+			background:#000 url(img/stars.png) repeat top center;
+		}
+		#twinkling{
+			position:absolute;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+			width:100%;
+			height:100%;
+			display:block;
+			background:transparent url(img/twinkling.png) repeat top center;
+			z-index:0;
+			
+			-moz-animation:move-twink-back 600s linear infinite;
+			-ms-animation:move-twink-back 600s linear infinite;
+			-o-animation:move-twink-back 600s linear infinite;
+			-webkit-animation:move-twink-back 600s linear infinite;
+			animation:move-twink-back 600s linear infinite;
+		}
+		#description{
+			margin-top: 100px;
+			opacity: .2;
+			font-size: smaller;
+			color: white;
+		}
+		@keyframes move-twink-back {
+			from {background-position:0 0;}
+			to {background-position:-10000px 5000px;}
+		}
+		@-webkit-keyframes move-twink-back {
+			from {background-position:0 0;}
+			to {background-position:-10000px 5000px;}
+		}
+		@-moz-keyframes move-twink-back {
+			from {background-position:0 0;}
+			to {background-position:-10000px 5000px;}
+		}
+		@-ms-keyframes move-twink-back {
+			from {background-position:0 0;}
+			to {background-position:-10000px 5000px;}
+			}
+		h1 {
+			font-size: 2em;
+			color: #fff;
+			letter-spacing: .1em;
+			padding: 1em;
+			display: block;
+			opacity:.90;filter:alpha(opacity=90);
+		}
+		.time {
+			padding: .4em;
+			font-size: 2em;
+			color: #fff; //rgb(73,173,225);
+		}
+		#background{
+			position:fixed;
+			height:100%;
+			width:100%;
+			z-index:-1;
+			display:block;
+			overflow:hidden;
+		}
+		#background div{
+			height:35px;
+			width:33px;
+			display:inline-block;
+			font-size:2em;
+			-webkit-animation: twinkle 5s infinite linear;
+			-moz-animation: twinkle 5s infinite linear;
+			-ms-animation: twinkle 5s infinite linear;
+			-o-animation: twinkle 5s infinite linear;
+			animation: twinkle 5s infinite linear;
+		}
+		@-webkit-keyframes twinkle {
+		    0% { color: rgb(62,161,216);
+		    		text-shadow:0 0 5px 0 rgba(73,173,225,0.35);
+		    }
+		    25% { color: rgb(53,133,185);
+		    		text-shadow:0 0 5px 0 rgba(73,173,225,0.5);
+		    }
+		    50% { color: rgb(73,173,225);
+		    		text-shadow:0 0 5px 0 rgba(73,173,225,0.8);
+		    }
+		    75% { color: rgb(123,243,255);
+		    		text-shadow:0 0 5px 0 rgba(73,173,225,0.8);
+		    }
+		    100% { color: rgb(62,161,216);
+		    		text-shadow:0 0 5px 0 rgba(73,173,225,0.35);
+		    }
+		}
+		@-moz-keyframes twinkle {
+		    0% { color: rgb(62,161,216);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.35);
+		    }
+		    25% { color: rgb(53,133,185);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.5);
+		    }
+		    50% { color: rgb(73,173,225);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.8);
+		    }
+		    75% { color: rgb(123,243,255);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.8);
+		    }
+		    100% { color: rgb(62,161,216);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.35);
+		    }
+		}
+		@-ms-keyframes twinkle {
+		    0% { color: rgb(62,161,216);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.35);
+		    }
+		    25% { color: rgb(53,133,185);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.5);
+		    }
+		    50% { color: rgb(73,173,225);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.8);
+		    }
+		    75% { color: rgb(123,243,255);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.8);
+		    }
+		    100% { color: rgb(62,161,216);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.35);
+		    }
+		}
+		@-o-keyframes twinkle {
+		    0% { color: rgb(62,161,216);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.35);
+		    }
+		    25% { color: rgb(53,133,185);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.5);
+		    }
+		    50% { color: rgb(73,173,225);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.8);
+		    }
+		    75% { color: rgb(123,243,255);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.8);
+		    }
+		    100% { color: rgb(62,161,216);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.35);
+		    }
+		}
+		@keyframes twinkle {
+		    0% { color: rgb(62,161,216);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.35);
+		    }
+		    25% { color: rgb(53,133,185);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.5);
+		    }
+		    50% { color: rgb(73,173,225);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.8);
+		    }
+		    75% { color: rgb(123,243,255);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.8);
+		    }
+		    100% { color: rgb(62,161,216);
+		    		text-shadow:0 0 5px rgba(73,173,225,0.35);
+		    }
+		}
+
+
+	</style>
+</head>
+	<body>
+	<div id="twinkling"></div>
+	<h1>YOU COULD WAKE AT</h1>
+	<div class="wrap"></div>
+	<div id="description">This is based off the principle that it takes approximatly 14 minutes for the average person to fall asleep. The time between REM cycles is +/- 90 minutes, thus we can predict when the average person will not be in a REM.<br><br>Or so I'm told.</div>
+	</body>
+</html>

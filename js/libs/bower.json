@@ -1,0 +1,11 @@
+{
+	"name" : "Sleep",
+	"version" : "0.1.0",
+	"dependencies": {
+			"jquery": "1.x",
+			"jQuery": "1.x",
+
+			"moment": null,
+			"livestampjs": null
+		}
+}
